@@ -46,11 +46,12 @@ jobs:
         git clone --depth=1 https://github.com/$BUILD_VERSION/rt-n56u.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         echo "--------------dl_toolchain---------------"
-        sh dl_toolchain.sh
+        sudo ./clean_toolchain
+        sudo ./build_toolchain
         echo "--------------end---------------"
         echo "--------------mkdir---------------"
-        mkdir /opt
-        mkdir /opt/images/
+        sudo mkdir /opt
+        sudo mkdir /opt/images/
         echo "--------------end---------------"
     - id: vars
       run: |
