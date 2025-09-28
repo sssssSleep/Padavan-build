@@ -45,9 +45,13 @@ jobs:
       run: |
         git clone --depth=1 https://github.com/$BUILD_VERSION/rt-n56u.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
+        echo "--------------dl_toolchain---------------"
         sh dl_toolchain.sh
+        echo "--------------end---------------"
+        echo "--------------mkdir---------------"
         mkdir /opt
         mkdir /opt/images/
+        echo "--------------end---------------"
     - id: vars
       run: |
         echo ::set-output name=go_version::$(curl -s https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json | grep -oE '"version": "[0-9]{1}.[0-9]{1,}(.[0-9]{1,})?"' | head -1 | cut -d':' -f2 | sed 's/ //g; s/"//g')
